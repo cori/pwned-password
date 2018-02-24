@@ -22,11 +22,10 @@ $(function() {
           // },
           method: 'GET',
           success: function(data){
-            checkPwdHash(hash, data);
-            console.log(data);
+            var pwnedCount = checkPwdHash(hash, data);
+            alert(pwnedCount);
           }
-      });  
-      alert(hashPrefix);
+      });
     }, function(err) {
       alert(err);
     });
@@ -47,7 +46,6 @@ function hex(buffer) {
     var paddedValue = (padding + stringValue).slice(-padding.length)
     hexCodes.push(paddedValue);
   }
-
   return hexCodes.join("");
 }
 
@@ -55,9 +53,10 @@ function checkPwdHash(hash, data) {
   var lines = data.split('\n');
   for(var i = 0; i < lines.length; i++){
     var hashBits = lines[i].split(':');
-    if( hash.endsWith(hashBits[0]) {
+    console.log(hashBits[0]);
+    if( hash.endsWith(hashBits[0])) {
        return hashBits[1];
     }
-    return false;
   }
+  return 0;
 }
