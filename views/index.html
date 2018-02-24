@@ -27,7 +27,7 @@
         will clean this up later, but for now:
         <ul>
           <li>password hashing and checking will be done client-side, so your password itself will never be passed to the server or to the HIBP API (both of which will only receive the first 5 characters of the SHA-1 hash)</li>
-          <li>relies on the Web Crypto API, which only <a href=""modern" browsers](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Browser_compatibility) currently support. Basically, this won't work in IE or Safari</li>
+          <li>relies on the Web Crypto API's SubtleCrypto methods, which only <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Browser_compatibility">"modern" browsers</a> currently support. Basically, this won't work in IE or Safari</li>
           <li>rough implementation with little or no error handling or UI niceties (like warning unsupported browsers)</li>
         </ul>
       </div>
