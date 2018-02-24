@@ -10,21 +10,20 @@ $(function() {
     var prom = crypto.subtle.digest('SHA-1', encoded);
 
     prom.then(function(result) {
-      var hash = hex(result);
+      var hash = hex(result).toUpperCase();
       
       var hashPrefix = hash.substring(0,5);
       
       $.get(
         {
-          url: 'https://api.pwnedpasswords.com/pwnedpassword/',
-          headers: {
-            'Content-Type':'application/json'
-          },
-          method: 'POST',
-          dataType: 'json',
-          data: hashPrefix,
+          url: 'https://api.pwnedpasswords.com/range/' + hashPrefix,
+          // headers: {
+          //   'Content-Type':'application/json'
+          // },
+          method: 'GET',
           success: function(data){
-            console.log('success: '+data);
+            checkPwdHash(hash, data);
+            console.log(data);
           }
       });  
       alert(hashPrefix);
@@ -50,4 +49,12 @@ function hex(buffer) {
   }
 
   return hexCodes.join("");
+}
+
+function checkPwdHash(hash, data) {
+  var lines = data.split('\n');
+  for(var i = 0; i < lines.length; i++){
+    var hashSuffix = lines[i].
+    
+  }
 }
