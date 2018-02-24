@@ -54,7 +54,10 @@ function hex(buffer) {
 function checkPwdHash(hash, data) {
   var lines = data.split('\n');
   for(var i = 0; i < lines.length; i++){
-    var hashSuffix = lines[i].
-    
+    var hashBits = lines[i].split(':');
+    if( hash.endsWith(hashBits[0]) {
+       return hashBits[1];
+    }
+    return false;
   }
 }
