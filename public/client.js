@@ -11,7 +11,23 @@ $(function() {
 
     prom.then(function(result) {
       var hash = hex(result);
-      alert(hash);
+      
+      var hashPrefix = hash.substring(0,5);
+      
+      $.get(
+        {
+          url: 'https://api.pwnedpasswords.com/pwnedpassword/',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          method: 'POST',
+          dataType: 'json',
+          data: hashPrefix,
+          success: function(data){
+            console.log('success: '+data);
+          }
+      });  
+      alert(hashPrefix);
     }, function(err) {
       alert(err);
     });
