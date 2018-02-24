@@ -17,14 +17,19 @@
 
     <main>
       <p class="bold">Let's find out!</p>
-      <p>Type your password and we'll check the Have I Been Pwned list of exposed passwords to see if your is in there.</p>
+      <p>Type your password and we'll check the Have I Been Pwned list of exposed passwords to see if yours is in there.</p>
       <form>
         <input type="password" maxlength="100" placeholder="password">
         <button type="submit">Submit</button>
       </form>
       
       <div id="info">
-        
+        will clean this up later, but for now:
+        <ul>
+          <li>password hashing and checking will be done client-side, so your password itself will never be passed to the server or to the HIBP API (both of which will only receive the first 5 characters of the SHA-1 hash)</li>
+          <li>relies on the Web Crypto API, which only <a href=""modern" browsers](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Browser_compatibility) currently support. Basically, this won't work in IE or Safari</li>
+          <li>rough implementation with little or no error handling or UI niceties (like warning unsupported browsers)</li>
+        </ul>
       </div>
     </main>
 
@@ -39,6 +44,6 @@
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
     <script src="/client.js"></script>
-
+    <script src="https://remix-corner.glitch.me/glitch-corner.js"></script>
   </body>
 </html>
