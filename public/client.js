@@ -1,4 +1,7 @@
 $(function() {
+  
+  $('input').focus();
+  
   $('form').submit(function(event) {
     event.preventDefault();
     var pwd = $('input').val();
@@ -17,20 +20,24 @@ $(function() {
       $.get(
         {
           url: 'https://api.pwnedpasswords.com/range/' + hashPrefix,
-          // headers: {
-          //   'Content-Type':'application/json'
-          // },
           method: 'GET',
           success: function(data){
             var pwnedCount = checkPwdHash(hash, data);
-            alert(pwnedCount);
+              $('#results-count').text(pwnedCount);
+            if (pwnedCount == 0 ) {
+              var $rtitle = $('#results-title');
+              $rtitle.css('color', 'green');
+              $rtitle.text('Your password has not been exposed');
+              $('#results-text').text("Your password doesn't show up in the Have I Been Pwned exposed password list.");
+            }
+            $('#results').toggle();
+            // alert(pwnedCount);
           }
       });
     }, function(err) {
-      alert(err);
+      console.log(err);
     });
-    // $.post('/checkpwd?' + $.param({pwd: pwd}), function() {
-    // });
+    $('input').val('');
   });
 
 });
@@ -53,7 +60,7 @@ function checkPwdHash(hash, data) {
   var lines = data.split('\n');
   for(var i = 0; i < lines.length; i++){
     var hashBits = lines[i].split(':');
-    console.log(hashBits[0]);
+    // console.log(hashBits[0]);
     if( hash.endsWith(hashBits[0])) {
        return hashBits[1];
     }

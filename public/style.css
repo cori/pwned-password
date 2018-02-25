@@ -15,15 +15,30 @@ body {
 
 h1 {
   font-weight: bold;
-  color: pink;
+  color: #9c27b0;
 }
 
 .bold {
   font-weight: bold;
 }
 
-p {
-  max-width: 600px;
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.biggerer {
+  font-size: 125%;
 }
 
 form {
@@ -79,4 +94,27 @@ footer > a {
 
 .nicejob {
   text-decoration: line-through;
+}
+
+div.left {
+  float: left;
+  padding-right: 25px;
+}
+
+div.clear {
+  clear: both;
+}
+
+div#results {
+  text-align: center;
+  display: none;
+  bbackground-color: 
+}
+
+#results-title {
+  color: red;
+}
+
+#data {
+  width: 25%;
 }
