@@ -3,7 +3,7 @@ Pwned Password checker
 
 ![shield](https://octicons.glitch.me/svg/shield.svg?size=64&color=00FF00)
 
-Simple client for the [Have I bbeen pwned?](https://haveibeenpwned.com) [Pwned Passwords API](https://haveibeenpwned.com/API/v2#PwnedPasswords).
+Simple client for the [Have I been pwned?](https://haveibeenpwned.com) [Pwned Passwords API](https://haveibeenpwned.com/API/v2#PwnedPasswords).
 
 Uses [range searches](https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange) and performs all "cryptographic" (hashing) and searching functions in the browser, so nothing except the first 5 characters of the SHA-1 hash of the password is ever sent to the API, maintaining anonymity.
 
