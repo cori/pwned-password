@@ -28,9 +28,10 @@ $(function() {
               var $rtitle = $('#results-title');
               $rtitle.css('color', 'green');
               $rtitle.text('Your password has not been exposed');
-              $('#results-text').text("Your password doesn't show up in the Have I Been Pwned exposed password list.");
+              $('#results-text').html("Your password doesn't show up in the <i>Have I been pwned?</i> exposed password list.");
             }
             $('#results').toggle();
+            $('#results')[0].scrollIntoView({behavior:"smooth"});
             // alert(pwnedCount);
           }
       });

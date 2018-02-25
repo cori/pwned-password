@@ -41,6 +41,11 @@ h1 {
   font-size: 125%;
 }
 
+p {
+  max-width: 600px;
+  line-height: 1.5;
+}
+
 form {
   margin-bottom: 25px;
   padding: 15px;
@@ -108,13 +113,23 @@ div.clear {
 div#results {
   text-align: center;
   display: none;
-  bbackground-color: 
 }
 
 #results-title {
   color: red;
 }
 
-#data {
-  width: 25%;
+@media(min-width: 501px) {
+  #data {
+    width: 25%;
+  }
+}
+
+@media(max-width: 500px) {
+  #data {
+    width: 100%;
+  }
+  #results {
+    padding-bottom: 25px;
+  }
 }

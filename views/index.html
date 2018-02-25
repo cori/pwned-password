@@ -17,7 +17,7 @@
 
     <main>
       <h2 class="bold">Let's find out!</h2>
-      <p>Subbmit your password and we'll check the Have I Been Pwned list of exposed passwords to see if yours is in there.</p>
+      <p>Submit your password and we'll check the <a href="https://haveibeenpwned.com"><i>Have I been pwned?</i></a> list of exposed passwords (using the <i>Have I been pwned?</i> <a href="https://haveibeenpwned.com/API/v2#PwnedPasswords">Pwned Passwords API</a>) to see if yours is in there. If it is, we'll tell you how many times it appears.</p>
       <div class="left" id="data">
         <form>
         <input type="password" maxlength="100" placeholder="password">
@@ -28,17 +28,23 @@
         <h2 id="results-title">
           Your password has been pwned!
         </h2>
-        <span id="results-text">Your password shows up in the Have I Been Pwned exposed passwords list <span id="results-count" class="bold blink biggerer"></span> times.</span>
+        <span id="results-text">Your password shows up in the <i>Have I been pwned?</i> exposed passwords list <span id="results-count" class="bold blink biggerer"></span> times.</span>
       </div>
       <div class="clear" />
       
       <div id="info">
-        will clean this up later, but for now:
-        <ul>
-          <li>password hashing and checking will be done client-side, so your password itself will never be passed to the server or to the HIBP API (both of which will only receive the first 5 characters of the SHA-1 hash)</li>
-          <li>relies on the Web Crypto API's SubtleCrypto methods, which only <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Browser_compatibility">"modern" browsers</a> currently support. Basically, this won't work in IE or Safari</li>
-          <li>rough implementation with little or no error handling or UI niceties (like warning unsupported browsers)</li>
-        </ul>
+        <h2>
+          Notes
+        </h2>
+        <p>
+          We use a <a href="https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange">range search</a> to check for your password's exposure, 
+          and all of the hashing and comparing is done in your browser. Only the first 5 characters of the hash is sent to the <i>Have I been pwned?</i> site so your anonymity is maintained.
+        </p>
+        <p>
+          We rely on the Web Crypto API's <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto">SubtleCrypto</a> methods, 
+          which only <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Browser_compatibility">"modern" browsers</a> 
+          support. Basically, this site might not work in IE, Opera, or Safari.
+        </p>
       </div>
     </main>
 
